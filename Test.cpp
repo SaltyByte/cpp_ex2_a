@@ -76,10 +76,10 @@ TEST_CASE ("Testing Post and Read") {
 
 
     CHECK(board2->read(0, 0, Direction::Vertical, 25) == "Hi alex, nice to meet you");
-    CHECK(board2->read(0, 1, Direction::Vertical, 50) == "Im still learning English, so please speak slowly");
-    CHECK(board2->read(0, 2, Direction::Vertical, 59) == "I just started working here. Im the new software developer");
+    CHECK(board2->read(0, 1, Direction::Vertical, 49) == "Im still learning English, so please speak slowly");
+    CHECK(board2->read(0, 2, Direction::Vertical, 58) == "I just started working here. Im the new software developer");
     CHECK(board2->read(0, 3, Direction::Vertical, 36) == "How long have you been working here?");
-    CHECK(board2->read(0, 4, Direction::Vertical, 27) == "Lets get a coffee sometime");
+    CHECK(board2->read(0, 4, Direction::Vertical, 26) == "Lets get a coffee sometime");
     CHECK(board2->read(0, 5, Direction::Vertical, 26) == "I know a good place nearby");
     CHECK(board2->read(0, 6, Direction::Vertical, 56) == "If you have a moment, I would love your thoughts on this");
 
