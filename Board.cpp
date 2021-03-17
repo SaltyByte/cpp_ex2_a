@@ -8,7 +8,7 @@ namespace ariel {
     std::string Board::read(int row, int col, Direction direction, int length){
         return "Hello There";
     }
-    void Board::post(int row, int col, Direction direction, std::string word) {
+    void Board::post(int row, int col, Direction direction, const std::string &word) {
         cout << "Hello There, In Post" << endl;
     }
     void Board::show(){
