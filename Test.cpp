@@ -7,8 +7,10 @@ using namespace std;
 using namespace ariel;
 
 TEST_CASE ("Testing Post and Read") {
+
     // Testing horizontal posting
     Board *board = new Board;
+
     board->post(0, 0, Direction::Horizontal, "Hi alex, nice to meet you");
     board->post(1, 0, Direction::Horizontal, "Im still learning English, so please speak slowly");
     board->post(2, 0, Direction::Horizontal, "I just started working here. Im the new software developer");
@@ -16,7 +18,6 @@ TEST_CASE ("Testing Post and Read") {
     board->post(4, 0, Direction::Horizontal, "Lets get a coffee sometime");
     board->post(5, 0, Direction::Horizontal, "I know a good place nearby");
     board->post(6, 0, Direction::Horizontal, "If you have a moment, I would love your thoughts on this");
-
 
             CHECK(board->read(0, 0, Direction::Horizontal, 25) == "Hi alex, nice to meet you");
             CHECK(board->read(1, 0, Direction::Horizontal, 49) == "Im still learning English, so please speak slowly");
@@ -49,6 +50,17 @@ TEST_CASE ("Testing Post and Read") {
             CHECK(board->read(0, 9, Direction::Vertical, 7) == "nlahagv");
             CHECK(board->read(0, 10, Direction::Vertical, 7) == "iera oe");
             CHECK(board->read(0, 10, Direction::Vertical, 10) == "iera oe___");
+            CHECK(board->read(0, 27, Direction::Vertical, 10) == "_s.i__l___");
+
+
+    board->post(0, 0, Direction::Vertical, "Testing");
+    board->post(0, 1, Direction::Vertical, "Moar te");
+
+            CHECK(board->read(0, 0, Direction::Horizontal, 4) == "TM a");
+            CHECK(board->read(1, 0, Direction::Horizontal, 4) == "eo s");
+            CHECK(board->read(2, 0, Direction::Horizontal, 4) == "saju");
+            CHECK(board->read(3, 0, Direction::Horizontal, 4) == "trw ");
+            CHECK(board->read(4, 0, Direction::Horizontal, 4) == "i ts");
 
 
 //    // testing empty spaces
@@ -60,11 +72,12 @@ TEST_CASE ("Testing Post and Read") {
             CHECK(board->read(100, 100, Direction::Vertical, 7) == "_______");
             CHECK(board->read(1000, 1000, Direction::Horizontal, 7) == "_______");
             CHECK(board->read(1000, 1000, Direction::Vertical, 7) == "_______");
+            CHECK(board->read(0, 0, Direction::Horizontal, 0) == "");
+            CHECK(board->read(0, 1, Direction::Horizontal, 0) == "");
 
     delete board;
 
     // Testing vertical posting
-
     Board *board2 = new Board;
     board2->post(0, 0, Direction::Vertical, "Hi alex, nice to meet you");
     board2->post(0, 1, Direction::Vertical, "Im still learning English, so please speak slowly");
@@ -83,7 +96,6 @@ TEST_CASE ("Testing Post and Read") {
             CHECK(board2->read(0, 5, Direction::Vertical, 26) == "I know a good place nearby");
             CHECK(board2->read(0, 6, Direction::Vertical, 56) == "If you have a moment, I would love your thoughts on this");
 
-    //TODO check this
             CHECK(board2->read(4, 0, Direction::Vertical, 10) == "lex, nice ");
             CHECK(board2->read(3, 0, Direction::Vertical, 5) == "alex,");
             CHECK(board2->read(2, 0, Direction::Vertical, 2) == " a");
@@ -106,7 +118,8 @@ TEST_CASE ("Testing Post and Read") {
             CHECK(board2->read(9, 0, Direction::Horizontal, 7) == "nlahagv");
             CHECK(board2->read(10, 0, Direction::Horizontal, 7) == "iera oe");
             CHECK(board2->read(10, 0, Direction::Horizontal, 10) == "iera oe___");
-    //TODO check this
+            CHECK(board2->read(27, 0, Direction::Horizontal, 10) == "_s.i__l___");
+
     delete board2;
 
 }
@@ -118,9 +131,6 @@ TEST_CASE("Testing Throws") {
     // test empty board
     CHECK_THROWS(board->read(0,0,Direction::Vertical,1));
     CHECK_THROWS(board->read(0,0,Direction::Horizontal,1));
-    CHECK_THROWS(board->read(-1,0,Direction::Horizontal,1));
-    CHECK_THROWS(board->read(0,-1,Direction::Horizontal,1));
-    CHECK_THROWS(board->read(-1,-1,Direction::Horizontal,1));
 
     board->post(0, 0, Direction::Horizontal, "Hi alex, nice to meet you");
     board->post(1, 0, Direction::Horizontal, "Im still learning English, so please speak slowly");
