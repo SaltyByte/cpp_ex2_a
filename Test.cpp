@@ -18,6 +18,7 @@ TEST_CASE ("Testing Post and Read") {
     board->post(4, 0, Direction::Horizontal, "Lets get a coffee sometime");
     board->post(5, 0, Direction::Horizontal, "I know a good place nearby");
     board->post(6, 0, Direction::Horizontal, "If you have a moment, I would love your thoughts on this");
+    board->post(50,50,Direction::Horizontal,"New string right here");
 
             CHECK(board->read(0, 0, Direction::Horizontal, 25) == "Hi alex, nice to meet you");
             CHECK(board->read(1, 0, Direction::Horizontal, 49) == "Im still learning English, so please speak slowly");
@@ -26,6 +27,7 @@ TEST_CASE ("Testing Post and Read") {
             CHECK(board->read(4, 0, Direction::Horizontal, 26) == "Lets get a coffee sometime");
             CHECK(board->read(5, 0, Direction::Horizontal, 26) == "I know a good place nearby");
             CHECK(board->read(6, 0, Direction::Horizontal, 56) == "If you have a moment, I would love your thoughts on this");
+            CHECK(board->read(50, 50, Direction::Horizontal, 21) == "New string right here");
 
             CHECK(board->read(0, 4, Direction::Horizontal, 10) == "lex, nice ");
             CHECK(board->read(0, 3, Direction::Horizontal, 5) == "alex,");
