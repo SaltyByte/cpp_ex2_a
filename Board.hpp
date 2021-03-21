@@ -6,8 +6,8 @@
 namespace ariel {
     class Board{
         public:
-            static std::string read(int row, int col, Direction direction, int length);
-            static void post(int row, int col, Direction direction, const std::string &word);
+            static std::string read(unsigned int row, unsigned int col, Direction direction, int length);
+            static void post(unsigned int row, unsigned int col, Direction direction, const std::string &word);
             static void show();
     };
 }
